@@ -278,7 +278,7 @@ if (render_part == "homerow") {
   }
 
   if (render_part == "thumbs" || render_part == "all") {
-    translate_u(3.4,-4.5) rotate([0,0,-25]){
+    translate_u(3.3,-5.5) {
       layout(
         advantage_maltron_thumbs_l,
         profile,
@@ -292,7 +292,7 @@ if (render_part == "homerow") {
         row_override_list=advantage_maltron_thumbs_l_rows,
         key_height_list=advantage_maltron_thumbs_l_h,
         small_size=small_text_size
-      ) children();
+      ) stabilized(vertical=true) children();
       translate_u(1.5,-0.5) rotate([0,0,-90])		
         layout(
           advantage_maltron_thumbs_backspace,
@@ -306,7 +306,7 @@ if (render_part == "homerow") {
         ) children($stem_rotation=90);
     }
 
-    translate_u(6.45,-5.8) rotate([0,0,25]){
+    translate_u(6.55,-5.5) {
       layout(
         advantage_maltron_thumbs_r,
         profile,
@@ -320,7 +320,7 @@ if (render_part == "homerow") {
         row_override_list=advantage_maltron_thumbs_r_rows,
         small_size=small_text_size,
         split_size=split_text_size
-      ) children();
+      ) stabilized(vertical=true) children();
       translate_u(1.5,-2.5) rotate([0,0,90])		
         layout(
           advantage_maltron_thumbs_enter,
@@ -387,7 +387,7 @@ if (render_part == "homerow") {
   }
 
   if (render_part == "thumbs" || render_part == "all") {
-    translate_u(3.4,-4.5) rotate([0,0,-25]){
+    translate_u(3.3,-5.5) {
       layout(
         advantage_maltron_thumbs_l,
         profile,
@@ -397,7 +397,7 @@ if (render_part == "homerow") {
         profile_override_list=advantage_maltron_thumbs_l_profiles,
         row_override_list=advantage_maltron_thumbs_l_rows,
         key_height_list=advantage_maltron_thumbs_l_h
-      ) children();
+      ) stabilized(vertical=true) children();
       translate_u(1.5,-0.5) rotate([0,0,-90])		
         layout(
           advantage_maltron_thumbs_backspace,
@@ -410,7 +410,7 @@ if (render_part == "homerow") {
         ) children($stem_rotation=90);
     }
 
-    translate_u(6.45,-5.8) rotate([0,0,25]){
+    translate_u(6.55,-5.5) {
       layout(
         advantage_maltron_thumbs_r,
         profile,
@@ -421,7 +421,7 @@ if (render_part == "homerow") {
         profile_override_list=advantage_maltron_thumbs_r_profiles,
         row_override_list=advantage_maltron_thumbs_r_rows,
         small_size=small_text_size
-      ) children();
+      ) stabilized(vertical=true) children();
       translate_u(1.5,-2.5) rotate([0,0,90])		
         layout(
           advantage_maltron_thumbs_enter,
