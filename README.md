@@ -12,11 +12,11 @@ Changes unique to this fork:
 
 To see all of the new layout features in use, and to generate a Kinesis Advantage keycap set (in Malt), see:
 ```
-/examples/advantage_maltron_layout.scad
+examples/advantage_maltron_layout.scad
 ```
 For generating single replacement keycaps based on this layout and settings, see:
 ```
-/examples/key_generator.scad
+examples/key_generator.scad
 ```
 
 Remaining intructions from the original readme follows:

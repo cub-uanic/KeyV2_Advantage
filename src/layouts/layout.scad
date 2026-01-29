@@ -20,6 +20,22 @@ function double_sculpted_column(column, row_length, column_sculpt_profile) =
         1hand(column, row_length) : (column_sculpt_profile == "cresting_wave") ?
           cresting_wave(column, row_length) : 0;
 
+module stem_type_container(key_length) {
+  if (key_length == 6.25) {
+    spacebar() children();
+  } else if (key_length == 2.25) {
+    lshift() children();
+  } else if (key_length == 2) {
+    backspace() children();
+  } else if (key_length == 2.75) {
+    rshift() children();
+  } else {
+    children();
+  }
+}
+
+
+
 module layout(list, profile="dcs", legends=undef, front_legends=undef,front_vert_legends=undef, 
               row_sculpting_offset=0, row_override=undef, 
               column_sculpt_profile="2hands", column_override=undef, 
@@ -30,9 +46,11 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef,front_vert
 			  
   for (row = [0:len(list)-1]) {
     /* echo("**ROW**:", row); */
+    $row = row;
     row_length = len(list[row]);
 
     for (column = column_override ? column_override : [0:len(list[row])-1]) {
+      $column = column;
       row_sculpting = (row_override_list ? row_override_list[row][column] : 
                        (row_override != undef ? row_override : row)) + 
                       row_sculpting_offset;
@@ -63,29 +81,22 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef,front_vert
                    $font_size=split_size)
             legend(bottom_legends ? bottom_legends[row][column] : "", [0,0.8],
                    $font_size=split_size)
-            cherry() {
-              $row = row;
-              $column = column;
 
-              if (key_length == 6.25) {
-                spacebar() {
-                  children();
-                }
-              } else if (key_length == 2.25) {
-                lshift() {
-                  children();
-                }
-              } else if (key_length == 2) {
-                backspace() {
-                  children();
-                }
-              } else if (key_length == 2.75) {
-                rshift() {
-                  children();
-                }
-              } else {
-                children();
-              }
+            // [cherry, alps, rounded_cherry, box_cherry, filled, disable]
+            if ($stem_type == "cherry") {
+              cherry() stem_type_container(key_length) children();
+            } else if ($stem_type == "alps") {
+              alps() stem_type_container(key_length) children();
+            } else if ($stem_type == "rounded_cherry") {
+              rounded_cherry() stem_type_container(key_length) children();
+            } else if ($stem_type == "box_cherry") {
+              box_cherry() stem_type_container(key_length) children();
+            } else if ($stem_type == "filled") {
+              filled() stem_type_container(key_length) children();
+            } else if ($stem_type == "disable") {
+              blank() stem_type_container(key_length) children();
+            } else {
+              echo("Warning: unsupported $stem_type:", $stem_type);
             }
         }
       }
